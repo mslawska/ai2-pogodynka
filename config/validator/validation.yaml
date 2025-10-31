@@ -1,0 +1,66 @@
+App\Entity\Location:
+    properties:
+        city:
+            - NotBlank:
+                  message: 'City name cannot be empty.'
+                  groups: [create, edit]
+        latitude:
+            - NotBlank:
+                  message: 'Latitude cannot be empty.'
+
+            - Range:
+                  min: -90
+                  max: 90
+                  notInRangeMessage: 'Latitude must be between {{ min }} and {{ max }}.'
+                  groups: [create, edit]
+
+        longitude:
+            - NotBlank:
+                  message: 'Longitude cannot be empty.'
+
+            - Range:
+                  min: -180
+                  max: 180
+                  notInRangeMessage: 'Longitude must be between {{ min }} and {{ max }}.'
+                  groups: [create, edit]
+
+App\Entity\Measurement:
+    properties:
+        date:
+            - NotBlank:
+                  message: 'Date cannot be empty.'
+                  groups: [create, edit]
+        celsius:
+            - NotBlank:
+                  message: 'Temperature cannot be empty.'
+            - Range:
+                  min: -100
+                  max: 80
+                  notInRangeMessage: 'Temperature must be between {{ min }}°C and {{ max }}°C.'
+                  groups: [create, edit]
+
+        wind_speed:
+            - NotBlank:
+                  message: 'Wind speed cannot be empty.'
+            - Range:
+                  min: 0
+                  max: 400
+                  notInRangeMessage: 'Wind speed must be between {{ min }} km/h and {{ max }} km/h.'
+                  groups: [create, edit]
+        humidity:
+            - NotBlank:
+                  message: 'Humidity cannot be empty.'
+            - Range:
+                  min: 0
+                  max: 100
+                  notInRangeMessage: 'Humidity must be between {{ min }}% and {{ max }}%.'
+                  groups: [create, edit]
+        pressure:
+            - NotBlank:
+                  message: 'Pressure cannot be empty.'
+            - Range:
+                  min: 800
+                  max: 1200
+                  notInRangeMessage: 'Pressure must be between {{ min }} hPa and {{ max }} hPa.'
+                  groups: [create, edit]
+
